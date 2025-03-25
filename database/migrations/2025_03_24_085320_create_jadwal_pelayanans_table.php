@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('jadwal_pelayanans', function (Blueprint $table) {
             $table->id();
-            $table->enum('hari',['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu']);
+            $table->enum('hari', ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu']);
             $table->time('jam_mulai');
             $table->time('jam_selesai');
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

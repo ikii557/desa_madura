@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('pengaduan_masyarakats', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('judul_pengaduan');
             $table->text('isi_pengaduan');
-            $table->string('foto_bukti');
-            $table->enum('status',['diproses','diterima','ditolak','selesai']);
-            $table->text('tanggapan');
+            $table->string('foto_bukti')->nullable();
+            $table->enum('status', ['diproses', 'diterima', 'ditolak', 'selesai'])->default('diproses');
+            $table->text('tanggapan')->nullable();
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('berita_desas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('admin_id');
+            $table->foreignId('admin_id')->constrained('users')->onDelete('cascade');
             $table->string('judul');
             $table->text('isi_berita');
-            $table->string('gambar');
+            $table->string('gambar')->nullable();
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
