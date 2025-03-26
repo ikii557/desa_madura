@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('pengajuan_surats', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->enum('jenis_surat',['KTP','KK','Domisili','Nikah','Lainnya']);
-            $table->string('dokumen_pendukung');
-            $table->enum('status',['diproses','diterima','ditolak']);
-            $table->text('alasan_penolakan');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->enum('jenis_surat', ['KTP', 'KK', 'Domisili', 'Nikah', 'Lainnya']);
+            $table->text('dokumen_pendukung');
+            $table->enum('status', ['diproses', 'diterima', 'ditolak'])->default('diproses');
+            $table->text('alasan_penolakan')->nullable();
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

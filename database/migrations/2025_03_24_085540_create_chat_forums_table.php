@@ -16,8 +16,15 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->text('isi_pesan');
             $table->timestamps();
+
+            // Tambahkan foreign key
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            // Tambahkan index
+            $table->index('user_id');
         });
     }
+
 
     /**
      * Reverse the migrations.

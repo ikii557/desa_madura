@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('statistik_desas', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('total_penduduk');
-            $table->bigInteger('total_kk');
-            $table->bigInteger('total_pengajuan');
-            $table->bigInteger('total_pengaduan');
+            $table->unsignedBigInteger('total_penduduk');
+            $table->unsignedBigInteger('total_kk');
+            $table->unsignedBigInteger('total_pengajuan');
+            $table->unsignedBigInteger('total_pengaduan');
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
