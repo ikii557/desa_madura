@@ -21,29 +21,29 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/dashboard', function () {
     return view('pages.index');
 });
 
-
-
-// Berita Desa
-Route::resource('berita-desa', BeritaDesaController::class);
-
-// Chat Forum
-Route::resource('chat-forum', ChatForumController::class);
-
-// Jadwal Pelayanan
-Route::resource('jadwal-pelayanan', JadwalPelayananController::class);
-
-// Pengaduan Masyarakat
-Route::resource('pengaduan-masyarakat', PengaduanMasyarakatController::class);
-
-// Pengajuan Surat
-Route::resource('pengajuan-surat', PengajuanSuratController::class);
-
-// Statistik Desa
-Route::resource('statistik-desa', StatistikDesaController::class);
-
-// User Management
-Route::resource('users', UserController::class);
+//datauser//
+Route::get('adminsatu', function () {
+    return view('pages.datauser.admin.adminsatu.dataadminsatu');
+});
+Route::get('admindua', function () {
+    return view('pages.datauser.admin.admindua.dataadmindua');
+});
+Route::get('perangkatdesa', function () {
+    return view('pages.datauser.perangkatdesa');
+});
+Route::get('warga', function () {
+    return view('pages.datauser.warga');
+});
+Route::get('/', function () {
+    return view('pages.index');
+});
+Route::get('/', function () {
+    return view('pages.index');
+});
+Route::get('/', function () {
+    return view('pages.index');
+});
