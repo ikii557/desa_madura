@@ -35,114 +35,95 @@
                 </span>
                 <h4 class="text-section">Components</h4>
               </li>
-              <li class="nav-item {{ request()->is('admindua') ? 'active' : '' }}">
-                <a data-bs-toggle="collapse" href="#submenu">
+              <li class="nav-item {{ request()->is('adminsatu') || request()->is('admindua') ? 'active' : '' }}">
+                <a data-bs-toggle="collapse" href="#submenu" aria-expanded="{{ request()->is('adminsatu') || request()->is('admindua') ? 'true' : 'false' }}">
                   <i class="fas fa-bars"></i>
                   <p>Menu </p>
                   <span class="caret"></span>
                 </a>
-                <div class="collapse" id="submenu">
+                <div class="collapse {{ request()->is('adminsatu') || request()->is('admindua') ? 'show' : '' }}" id="submenu">
                   <ul class="nav nav-collapse">
-                    <li>
-                      <a data-bs-toggle="collapse" href="#subnav1">
-                        <span class="sub-item">profil admin</span>
+                    
+                    {{-- Tambahkan class active di li ini saat adminsatu atau admindua --}}
+                    <li class="{{ request()->is('adminsatu') || request()->is('admindua') ? 'active' : '' }}">
+                      <a data-bs-toggle="collapse" href="#subnav1" aria-expanded="{{ request()->is('adminsatu') || request()->is('admindua') ? 'true' : 'false' }}">
+                        <span class="sub-item">Profil Admin</span>
                         <span class="caret"></span>
                       </a>
-                      <div class="collapse" id="subnav1">
+                      <div class="collapse {{ request()->is('adminsatu') || request()->is('admindua') ? 'show' : '' }}" id="subnav1">
                         <ul class="nav nav-collapse subnav">
-                          <li>
-                            <a href="adminsatu">
-                              <span class="sub-item">admin 1</span>
+                          <li class="{{ request()->is('adminsatu') ? 'active' : '' }}">
+                            <a href="{{ url('adminsatu') }}">
+                              <span class="sub-item">Admin 1</span>
                             </a>
                           </li>
-                          <li>
-                            <a href="admindua">
-                              <span class="sub-item">admin 2</span>
+                          <li class="{{ request()->is('admindua') ? 'active' : '' }}">
+                            <a href="{{ url('admindua') }}">
+                              <span class="sub-item">Admin 2</span>
                             </a>
                           </li>
                         </ul>
                       </div>
                     </li>
-                    <li>
-                      <a data-bs-toggle="collapse" href="#subnav2">
-                        <span class="sub-item ">Perangkat Desa</span>
+
+                    <li class="{{ request()->is('perangkat-desa') ? 'active' : '' }}">
+                      <a data-bs-toggle="collapse" href="#subnav2" aria-expanded="{{ request()->is('perangkat-desa') ? 'true' : 'false' }}">
+                        <span class="sub-item">Perangkat Desa</span>
                         <span class="caret"></span>
                       </a>
-                      <div class="collapse" id="subnav2">
+                      <div class="collapse {{ request()->is('perangkat-desa') ? 'show' : '' }}" id="subnav2">
                         <ul class="nav nav-collapse subnav">
-                          <li>
-                            <a href="#">
+                          <li class="{{ request()->is('perangkat-desa') ? 'active' : '' }}">
+                            <a href="{{ url('perangkat-desa') }}">
                               <span class="sub-item">DATA perangkat desa</span>
                             </a>
                           </li>
                         </ul>
                       </div>
                     </li>
-                    <li>
-                      <a href="#">
+
+                    <li class="{{ request()->is('data-warga') ? 'active' : '' }}">
+                      <a href="{{ url('data-warga') }}">
                         <span class="sub-item">Data warga</span>
                       </a>
                     </li>
                   </ul>
                 </div>
               </li>
-              <li class="nav-item {{ request()->is('index') ? 'active' : '' }}">
-                <a data-bs-toggle="collapse" href="#base">
+
+              <li class="nav-item {{ request()->is('pengajuankk','pengajuanktp','pengajuandomisili','pengajuannikah') ? 'active' : '' }}">
+                <a data-bs-toggle="collapse" href="#base" aria-expanded="{{ request()->is('pengajuankk','pengajuanktp','pengajuandomisili','pengajuannikah') ? 'true' : 'false' }}">
                   <i class="fas fa-layer-group"></i>
                   <p>Data Pengajuan</p>
                   <span class="caret"></span>
                 </a>
-                <div class="collapse" id="base">
+                <div class="collapse {{ request()->is('pengajuankk','pengajuanktp','pengajuandomisili','pengajuannikah') ? 'show' : '' }}" id="base">
                   <ul class="nav nav-collapse">
-                    <li>
-                      <a href="components/avatars.html">
+                    <li class="{{ request()->is('pengajuanktp') ? 'active' : '' }}">
+                      <a href="{{ url('pengajuanktp') }}">
                         <span class="sub-item">PENGAJUAN KTP</span>
                       </a>
                     </li>
-                    <li>
-                      <a href="components/buttons.html">
+                    <li class="{{ request()->is('pengajuankk') ? 'active' : '' }}">
+                      <a href="{{ url('pengajuankk') }}">
                         <span class="sub-item">PENGAJUAN KK</span>
                       </a>
                     </li>
-                    <li>
-                      <a href="components/gridsystem.html">
+                    <li class="{{ request()->is('pengajuandomisili') ? 'active' : '' }}">
+                      <a href="{{ url('pengajuandomisili') }}">
                         <span class="sub-item">PENGAJUAN DOMISILI</span>
                       </a>
                     </li>
-                    <li>
-                      <a href="components/panels.html">
+                    <li class="{{ request()->is('pengajuannikah') ? 'active' : '' }}">
+                      <a href="{{ url('pengajuannikah') }}">
                         <span class="sub-item">PENGAJUAN NIKAH</span>
                       </a>
-                    {{-- </li>
-                    <li>
-                      <a href="components/notifications.html">
-                        <span class="sub-item">Notifications</span>
-                      </a>
                     </li>
-                    <li>
-                      <a href="components/sweetalert.html">
-                        <span class="sub-item">Sweet Alert</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="components/font-awesome-icons.html">
-                        <span class="sub-item">Font Awesome Icons</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="components/simple-line-icons.html">
-                        <span class="sub-item">Simple Line Icons</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="components/typography.html">
-                        <span class="sub-item">Typography</span>
-                      </a>
-                    </li> --}}
                   </ul>
                 </div>
               </li>
-              <li class="nav-item {{ request()->is('index') ? 'active' : '' }}">
+
+              <li class="nav-item {{ request()->is('pengaduan') ? 'active' : '' }}">
                 <a data-bs-toggle="collapse" href="#sidebarLayouts">
                   <i class="fas fa-th-list"></i>
                   <p>DATA PENGADUAN</p>
@@ -151,7 +132,7 @@
                 <div class="collapse" id="sidebarLayouts">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="sidebar-style-2.html">
+                      <a href="pengaduan">
                         <span class="sub-item">PENGADUAN WARGA DESA</span>
                       </a>
                     </li>

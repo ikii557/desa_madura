@@ -38,12 +38,24 @@ Route::get('perangkatdesa', function () {
 Route::get('warga', function () {
     return view('pages.datauser.warga');
 });
-Route::get('/', function () {
-    return view('pages.index');
+Route::get('pengaduan', function () {
+    return view('pages.datapengaduan.datapengaduan');
+});
+Route::get('pengajuankk', function () {
+    return view('pages.datapengajuan.pengajuankk.datakk');
+});
+Route::get('pengajuanktp', function () {
+    return view('pages.datapengajuan.pengajuanktp.dataktp');
+});
+Route::get('pengajuandomisili', function () {
+    return view('pages.datapengajuan.pengajuandomisili.datadomisili');
+});
+Route::get('pengajuannikah', function () {
+    return view('pages.datapengajuan.pengajuannikah.datanikah');
 });
 Route::get('/', function () {
     return view('pages.index');
 });
-Route::get('/', function () {
-    return view('pages.index');
+Route::get('chatforum', function () {
+    return view('pages.chatforum.formchat');
 });

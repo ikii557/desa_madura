@@ -2,6 +2,6 @@
 @section('main')
 
 
-jaja
+
     
 @endsection
