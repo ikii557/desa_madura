@@ -29,6 +29,10 @@ Route::get('/dashboard', function () {
 Route::get('adminsatu', function () {
     return view('pages.datauser.admin.adminsatu.dataadminsatu');
 });
+Route::get('tambahadminsatu', function () {
+    return view('pages.datauser.admin.adminsatu.tambahadminsatu');
+});
+
 Route::get('admindua', function () {
     return view('pages.datauser.admin.admindua.dataadmindua');
 });

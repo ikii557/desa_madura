@@ -36,9 +36,9 @@
                 <h4 class="text-section">Components</h4>
               </li>
              <li class="nav-item 
-                  {{ request()->is('adminsatu') || request()->is('admindua') || request()->is('perangkat_desa') || request()->is('data_warga') ? 'active' : '' }}">
+                  {{ request()->is('adminsatu') || request()->is('tambahadminsatu') || request()->is('admindua') || request()->is('perangkat_desa') || request()->is('data_warga') ? 'active' : '' }}">
                 <a data-bs-toggle="collapse" href="#submenu" 
-                  aria-expanded="{{ request()->is('adminsatu') || request()->is('admindua') || request()->is('perangkat_desa') || request()->is('data_warga') ? 'true' : 'false' }}">
+                  aria-expanded="{{ request()->is('adminsatu') || request()->is('tambahadminsatu') || request()->is('admindua') || request()->is('perangkat_desa') || request()->is('data_warga') ? 'true' : 'false' }}">
                   <i class="fas fa-bars"></i>
                   <p>Menu</p>
                   <span class="caret"></span>
@@ -50,7 +50,7 @@
                   <ul class="nav nav-collapse">
 
                     {{-- Submenu Admin --}}
-                    <li class="{{ request()->is('adminsatu') || request()->is('admindua') ? 'active' : '' }}">
+                    <li class="{{ request()->is('adminsatu') || request()->is('admindua') || request()->is('tambahadminsatu') ? 'active' : '' }}">
                       <a data-bs-toggle="collapse" href="#subnav1" 
                         aria-expanded="{{ request()->is('adminsatu') || request()->is('admindua') ? 'true' : 'false' }}">
                         <span class="sub-item">Profil Admin</span>
