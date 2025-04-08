@@ -66,7 +66,7 @@
                         class="dropdown-title d-flex justify-content-between align-items-center"
                       >
                         Messages
-                        <a href="#" class="small">Mark all as read</a>
+                        <a href="chatforum" class="small">Mark all as read</a>
                       </div>
                     </li>
                     <li>
@@ -309,7 +309,7 @@
                     </div>
                     <span class="profile-username">
                       <span class="op-7">Hi,</span>
-                      <span class="fw-bold">Hizrian</span>
+                      <span class="fw-bold">rifki</span>
                     </span>
                   </a>
                   <ul class="dropdown-menu dropdown-user animated fadeIn">

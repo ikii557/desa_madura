@@ -35,123 +35,132 @@
                 </span>
                 <h4 class="text-section">Components</h4>
               </li>
-              <li class="nav-item {{ request()->is('admindua') ? 'active' : '' }}">
-                <a data-bs-toggle="collapse" href="#submenu">
+             <li class="nav-item 
+                  {{ request()->is('adminsatu') || request()->is('admindua') || request()->is('perangkat_desa') || request()->is('data_warga') ? 'active' : '' }}">
+                <a data-bs-toggle="collapse" href="#submenu" 
+                  aria-expanded="{{ request()->is('adminsatu') || request()->is('admindua') || request()->is('perangkat_desa') || request()->is('data_warga') ? 'true' : 'false' }}">
                   <i class="fas fa-bars"></i>
-                  <p>Menu </p>
+                  <p>Menu</p>
                   <span class="caret"></span>
                 </a>
-                <div class="collapse" id="submenu">
+
+                <div class="collapse 
+                    {{ request()->is('adminsatu') || request()->is('admindua') || request()->is('perangkat_desa') || request()->is('data_warga') ? 'show' : '' }}" 
+                    id="submenu">
                   <ul class="nav nav-collapse">
-                    <li>
-                      <a data-bs-toggle="collapse" href="#subnav1">
-                        <span class="sub-item">profil admin</span>
+
+                    {{-- Submenu Admin --}}
+                    <li class="{{ request()->is('adminsatu') || request()->is('admindua') ? 'active' : '' }}">
+                      <a data-bs-toggle="collapse" href="#subnav1" 
+                        aria-expanded="{{ request()->is('adminsatu') || request()->is('admindua') ? 'true' : 'false' }}">
+                        <span class="sub-item">Profil Admin</span>
                         <span class="caret"></span>
                       </a>
-                      <div class="collapse" id="subnav1">
+
+                      <div class="collapse 
+                          {{ request()->is('adminsatu') || request()->is('admindua') ? 'show' : '' }}" 
+                          id="subnav1">
                         <ul class="nav nav-collapse subnav">
-                          <li>
-                            <a href="adminsatu">
-                              <span class="sub-item">admin 1</span>
+                          <li class="{{ request()->is('adminsatu') ? 'active' : '' }}">
+                            <a href="{{ url('adminsatu') }}">
+                              <span class="sub-item">Admin 1</span>
                             </a>
                           </li>
-                          <li>
-                            <a href="admindua">
-                              <span class="sub-item">admin 2</span>
+                          <li class="{{ request()->is('admindua') ? 'active' : '' }}">
+                            <a href="{{ url('admindua') }}">
+                              <span class="sub-item">Admin 2</span>
                             </a>
                           </li>
                         </ul>
                       </div>
                     </li>
-                    <li>
-                      <a data-bs-toggle="collapse" href="#subnav2">
-                        <span class="sub-item ">Perangkat Desa</span>
+
+                    {{-- Submenu Perangkat Desa --}}
+                    <li class="{{ request()->is('perangkat_desa') ? 'active' : '' }}">
+                      <a data-bs-toggle="collapse" href="#subnav2" 
+                        aria-expanded="{{ request()->is('perangkat_desa') ? 'true' : 'false' }}">
+                        <span class="sub-item">Perangkat Desa</span>
                         <span class="caret"></span>
                       </a>
-                      <div class="collapse" id="subnav2">
+
+                      <div class="collapse {{ request()->is('perangkat_desa') ? 'show' : '' }}" id="subnav2">
                         <ul class="nav nav-collapse subnav">
-                          <li>
-                            <a href="#">
-                              <span class="sub-item">DATA perangkat desa</span>
+                          <li class="{{ request()->is('perangkat_desa') ? 'active' : '' }}">
+                            <a href="{{ url('perangkat_desa') }}">
+                              <span class="sub-item">DATA Perangkat Desa</span>
                             </a>
                           </li>
                         </ul>
                       </div>
                     </li>
-                    <li>
-                      <a href="#">
-                        <span class="sub-item">Data warga</span>
+
+                    {{-- Submenu Data Warga --}}
+                    <li class="{{ request()->is('data-warga') ? 'active' : '' }}">
+                      <a data-bs-toggle="collapse" href="#subnav3" 
+                        aria-expanded="{{ request()->is('data-warga') ? 'true' : 'false' }}">
+                        <span class="sub-item">Data Warga</span>
+                        <span class="caret"></span>
                       </a>
+
+                      <div class="collapse {{ request()->is('data_warga') ? 'show' : '' }}" id="subnav3">
+                        <ul class="nav nav-collapse subnav">
+                          <li class="{{ request()->is('data_warga') ? 'active' : '' }}">
+                            <a href="{{ url('data_warga') }}">
+                              <span class="sub-item">DATA Warga</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
                     </li>
+
                   </ul>
                 </div>
               </li>
-              <li class="nav-item {{ request()->is('index') ? 'active' : '' }}">
-                <a data-bs-toggle="collapse" href="#base">
+
+
+              <li class="nav-item {{ request()->is('pengajuankk','pengajuanktp','pengajuandomisili','pengajuannikah') ? 'active' : '' }}">
+                <a data-bs-toggle="collapse" href="#base" aria-expanded="{{ request()->is('pengajuankk','pengajuanktp','pengajuandomisili','pengajuannikah') ? 'true' : 'false' }}">
                   <i class="fas fa-layer-group"></i>
                   <p>Data Pengajuan</p>
                   <span class="caret"></span>
                 </a>
-                <div class="collapse" id="base">
+                <div class="collapse {{ request()->is('pengajuankk','pengajuanktp','pengajuandomisili','pengajuannikah') ? 'show' : '' }}" id="base">
                   <ul class="nav nav-collapse">
-                    <li>
-                      <a href="components/avatars.html">
+                    <li class="{{ request()->is('pengajuanktp') ? 'active' : '' }}">
+                      <a href="{{ url('pengajuanktp') }}">
                         <span class="sub-item">PENGAJUAN KTP</span>
                       </a>
                     </li>
-                    <li>
-                      <a href="components/buttons.html">
+                    <li class="{{ request()->is('pengajuankk') ? 'active' : '' }}">
+                      <a href="{{ url('pengajuankk') }}">
                         <span class="sub-item">PENGAJUAN KK</span>
                       </a>
                     </li>
-                    <li>
-                      <a href="components/gridsystem.html">
+                    <li class="{{ request()->is('pengajuandomisili') ? 'active' : '' }}">
+                      <a href="{{ url('pengajuandomisili') }}">
                         <span class="sub-item">PENGAJUAN DOMISILI</span>
                       </a>
                     </li>
-                    <li>
-                      <a href="components/panels.html">
+                    <li class="{{ request()->is('pengajuannikah') ? 'active' : '' }}">
+                      <a href="{{ url('pengajuannikah') }}">
                         <span class="sub-item">PENGAJUAN NIKAH</span>
                       </a>
-                    {{-- </li>
-                    <li>
-                      <a href="components/notifications.html">
-                        <span class="sub-item">Notifications</span>
-                      </a>
                     </li>
-                    <li>
-                      <a href="components/sweetalert.html">
-                        <span class="sub-item">Sweet Alert</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="components/font-awesome-icons.html">
-                        <span class="sub-item">Font Awesome Icons</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="components/simple-line-icons.html">
-                        <span class="sub-item">Simple Line Icons</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="components/typography.html">
-                        <span class="sub-item">Typography</span>
-                      </a>
-                    </li> --}}
                   </ul>
                 </div>
               </li>
-              <li class="nav-item {{ request()->is('index') ? 'active' : '' }}">
-                <a data-bs-toggle="collapse" href="#sidebarLayouts">
+
+              <li class="nav-item {{ request()->is('pengaduan') ? 'active' : '' }}">
+                <a data-bs-toggle="collapse" href="#sidebarLayouts" 
+                  aria-expanded="{{ request()->is('pengaduan') ? 'true' : 'false' }}">
                   <i class="fas fa-th-list"></i>
                   <p>DATA PENGADUAN</p>
                   <span class="caret"></span>
                 </a>
-                <div class="collapse" id="sidebarLayouts">
+                <div class="collapse {{ request()->is('pengaduan') ? 'show' : '' }}" id="sidebarLayouts">
                   <ul class="nav nav-collapse">
-                    <li>
-                      <a href="sidebar-style-2.html">
+                    <li class="{{ request()->is('pengaduan') ? 'active' : '' }}">
+                      <a href="{{ url('pengaduan') }}">
                         <span class="sub-item">PENGADUAN WARGA DESA</span>
                       </a>
                     </li>
@@ -163,85 +172,84 @@
                   </ul>
                 </div>
               </li>
-              <li class="nav-item {{ request()->is('index') ? 'active' : '' }}">
-                <a data-bs-toggle="collapse" href="#forms">
+
+              <li class="nav-item {{ request()->is('berita') ? 'active' : '' }}">
+                <a data-bs-toggle="collapse" href="#forms" 
+                  aria-expanded="{{ request()->is('berita') ? 'true' : 'false' }}">
                   <i class="fas fa-pen-square"></i>
                   <p>BERITA</p>
                   <span class="caret"></span>
                 </a>
-                <div class="collapse" id="forms">
+                <div class="collapse {{ request()->is('berita') ? 'show' : '' }}" id="forms">
                   <ul class="nav nav-collapse">
-                    <li>
-                      <a href="forms/forms.html">
+                    <li class="{{ request()->is('berita') ? 'active' : '' }}">
+                      <a href="{{ url('berita') }}">
                         <span class="sub-item">SEKITAR DESA</span>
                       </a>
                     </li>
                   </ul>
                 </div>
               </li>
-              <li class="nav-item {{ request()->is('index') ? 'active' : '' }}">
-                <a data-bs-toggle="collapse" href="#tables">
+
+              <li class="nav-item {{ request()->is('pelayanan') || request()->is('senin_jumat') || request()->is('sabtu_minggu') ? 'active' : '' }}">
+                <a data-bs-toggle="collapse" href="#tables"
+                  aria-expanded="{{ request()->is('pelayanan') || request()->is('senin_jumat') || request()->is('sabtu_minggu') ? 'true' : 'false' }}">
                   <i class="fas fa-table"></i>
                   <p>DATA PELAYANAN</p>
                   <span class="caret"></span>
                 </a>
-                <div class="collapse" id="tables">
+                <div class="collapse {{ request()->is('pelayanan') || request()->is('senin_jumat') || request()->is('sabtu_minggu') ? 'show' : '' }}" id="tables">
                   <ul class="nav nav-collapse">
-                    <li>
-                      <a href="tables/tables.html">
+                    <li class="{{ request()->is('senin_jumat') ? 'active' : '' }}">
+                      <a href="{{ url('senin_jumat') }}">
                         <span class="sub-item">PELAYANAN SENIN-JUMAT</span>
                       </a>
                     </li>
-                    <li>
-                      <a href="tables/datatables.html">
+                    <li class="{{ request()->is('sabtu_minggu') ? 'active' : '' }}">
+                      <a href="{{ url('sabtu_minggu') }}">
                         <span class="sub-item">PELAYANAN SABTU-MINGGU</span>
                       </a>
                     </li>
                   </ul>
                 </div>
               </li>
-              <li class="nav-item {{ request()->is('index') ? 'active' : '' }}">
-                <a data-bs-toggle="collapse" href="#maps">
+
+              <li class="nav-item {{ request()->is('chat_forum') || request()->is('data_chat') ? 'active' : '' }}">
+                <a data-bs-toggle="collapse" href="#maps"
+                  aria-expanded="{{ request()->is('chat_forum') || request()->is('data_chat') ? 'true' : 'false' }}">
                   <i class="fas fa-map-marker-alt"></i>
                   <p>CHAT FORUM</p>
                   <span class="caret"></span>
                 </a>
-                <div class="collapse" id="maps">
+                <div class="collapse {{ request()->is('chat_forum') || request()->is('data_chat') ? 'show' : '' }}" id="maps">
                   <ul class="nav nav-collapse">
-                    <li>
-                      <a href="maps/googlemaps.html">
-                        <span class="sub-item">Google Maps</span>
+                    <li class="{{ request()->is('data_chat') ? 'active' : '' }}">
+                      <a href="{{ url('data_chat') }}">
+                        <span class="sub-item">data chat</span>
                       </a>
                     </li>
-                    {{-- <li>
-                      <a href="maps/jsvectormap.html">
-                        <span class="sub-item">Jsvectormap</span>
-                      </a>
-                    </li> --}}
                   </ul>
                 </div>
               </li>
-              <li class="nav-item {{ request()->is('index') ? 'active' : '' }}">
-                <a data-bs-toggle="collapse" href="#charts">
+
+              <li class="nav-item {{ request()->is('statistikdesa') || request()->is('data_statistik') ? 'active' : '' }}">
+                <a data-bs-toggle="collapse" href="#charts"
+                  aria-expanded="{{ request()->is('statistikdesa') || request()->is('data_statistik') ? 'true' : 'false' }}">
                   <i class="far fa-chart-bar"></i>
                   <p>STATISTIK DESA</p>
                   <span class="caret"></span>
                 </a>
-                <div class="collapse" id="charts">
+                <div class="collapse {{ request()->is('statistikdesa') || request()->is('data_statistik') ? 'show' : '' }}" id="charts">
                   <ul class="nav nav-collapse">
-                    <li>
-                      <a href="charts/charts.html">
-                        <span class="sub-item">Chart Js</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="charts/sparkline.html">
-                        <span class="sub-item">Sparkline</span>
+                    <li class="{{ request()->is('data_statistik') ? 'active' : '' }}">
+                      <a href="{{ url('data_statistik') }}">
+                        <span class="sub-item">data statistik desa</span>
                       </a>
                     </li>
                   </ul>
                 </div>
               </li>
+
               <li class="nav-item {{ request()->is('index') ? 'active' : '' }}">
                 <a href="widgets.html">
                   <i class="fas fa-desktop"></i>
