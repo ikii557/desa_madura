@@ -2,6 +2,18 @@
 @section('main')
 
 <div class="page-inner">
+    <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+              <div>
+                <h3 class="fw-bold mb-3">admin 1</h3>
+                <h6 class="op-7 mb-2">sekarang anda dalam admin 1</h6>
+              </div>
+              <div class="ms-md-auto py-2 py-md-0">
+                <a href="#" class="btn btn-label-info btn-round me-2">Manager</a>
+                <a href="tambahadminsatu" class="btn btn-primary btn-round"><i class="fa fa-plus"></i> Add Customer</a>
+                
+              </div>
+            </div>
+    
 <div class="row">
               <div class="col-md-4">
                 <div class="card card-info card-annoucement card-round">
@@ -189,7 +201,40 @@
                     </div>
                   </div>
                 </div>
+                
+                
               </div>
             </div>
+            <div class="container mt-4">
+<div class="card shadow-lg">
+<div class="card-header bg-dark text-white">
+  <h4 class="mb-0">Data Admin</h4>
+</div>
+<div class="card-body p-0">
+  <table class="table table-striped table-hover mb-0">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Nama</th>
+        <th scope="col">Jenis Kelamin</th>
+        <th scope="col">Email</th>
+        <th scope="col">No Telepon</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($adminsatu as $no => $admin)
+      <tr>
+        <td>{{ $no + 1 }}</td>
+        <td>{{ $admin->nama_lengkap }}</td>
+        <td>{{ $admin->jeniskelamin }}</td>
+        <td>{{ $admin->email }}</td>
+        <td>{{ $admin->no_hp }}</td>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
 </div>
 @endsection
