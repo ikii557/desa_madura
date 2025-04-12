@@ -26,12 +26,9 @@ Route::get('/dashboard', function () {
 });
 
 //datauser//
-Route::get('adminsatu', function () {
-    return view('pages.datauser.admin.adminsatu.dataadminsatu');
-});
-Route::get('tambahadminsatu', function () {
-    return view('pages.datauser.admin.adminsatu.tambahadminsatu');
-});
+Route::get('adminsatu', [UserController::class,'index']);
+Route::get('tambahadminsatu', [UserController::class,'create']);
+Route::post('/store/admin', [UserController::class , 'store']);
 
 Route::get('admindua', function () {
     return view('pages.datauser.admin.admindua.dataadmindua');
