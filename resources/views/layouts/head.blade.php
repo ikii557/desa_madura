@@ -9,7 +9,7 @@
       href="{{asset ('assets/img/kaiadmin/cilacaplogo.png')}}"
       type="image/x-icon"
     />
-
+    
     <!-- Fonts and icons -->
     <script src="{{asset ('assets/js/plugin/webfont/webfont.min.js')}}"></script>
     <script>

@@ -36,16 +36,16 @@
                 <h4 class="text-section">Components</h4>
               </li>
              <li class="nav-item 
-                  {{ request()->is('adminsatu') || request()->is('tambahadminsatu') || request()->is('admindua') || request()->is('perangkat_desa') || request()->is('data_warga') ? 'active' : '' }}">
+                  {{ request()->is('adminsatu') || request()->is('tambahadminsatu') || request()->is('admindua') || request()->is('perangkatdesa') || request()->is('data_warga') ? 'active' : '' }}">
                 <a data-bs-toggle="collapse" href="#submenu" 
-                  aria-expanded="{{ request()->is('adminsatu') || request()->is('tambahadminsatu') || request()->is('admindua') || request()->is('perangkat_desa') || request()->is('data_warga') ? 'true' : 'false' }}">
+                  aria-expanded="{{ request()->is('adminsatu') || request()->is('tambahadminsatu') || request()->is('admindua') || request()->is('perangkatdesa') || request()->is('data_warga') ? 'true' : 'false' }}">
                   <i class="fas fa-bars"></i>
                   <p>Menu</p>
                   <span class="caret"></span>
                 </a>
 
                 <div class="collapse 
-                    {{ request()->is('adminsatu') || request()->is('admindua') || request()->is('perangkat_desa') || request()->is('data_warga') ? 'show' : '' }}" 
+                    {{ request()->is('adminsatu') || request()->is('admindua') || request()->is('perangkatdesa') || request()->is('data_warga') ? 'show' : '' }}" 
                     id="submenu">
                   <ul class="nav nav-collapse">
 
@@ -76,17 +76,17 @@
                     </li>
 
                     {{-- Submenu Perangkat Desa --}}
-                    <li class="{{ request()->is('perangkat_desa') ? 'active' : '' }}">
+                    <li class="{{ request()->is('perangkatdesa') ? 'active' : '' }}">
                       <a data-bs-toggle="collapse" href="#subnav2" 
-                        aria-expanded="{{ request()->is('perangkat_desa') ? 'true' : 'false' }}">
+                        aria-expanded="{{ request()->is('perangkatdesa') ? 'true' : 'false' }}">
                         <span class="sub-item">Perangkat Desa</span>
                         <span class="caret"></span>
                       </a>
 
-                      <div class="collapse {{ request()->is('perangkat_desa') ? 'show' : '' }}" id="subnav2">
+                      <div class="collapse {{ request()->is('perangkatdesa') ? 'show' : '' }}" id="subnav2">
                         <ul class="nav nav-collapse subnav">
-                          <li class="{{ request()->is('perangkat_desa') ? 'active' : '' }}">
-                            <a href="{{ url('perangkat_desa') }}">
+                          <li class="{{ request()->is('perangkatdesa') ? 'active' : '' }}">
+                            <a href="{{ url('perangkatdesa') }}">
                               <span class="sub-item">DATA Perangkat Desa</span>
                             </a>
                           </li>
