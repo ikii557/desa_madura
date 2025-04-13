@@ -300,17 +300,17 @@
                     href="#"
                     aria-expanded="false"
                   >
-                    <div class="avatar-sm">
-                      <img
-                        src="{{asset ('assets/img/profile.jpg')}}"
-                        alt="..."
-                        class="avatar-img rounded-circle"
-                      />
-                    </div>
-                    <span class="profile-username">
-                      <span class="op-7">Hi,</span>
-                      <span class="fw-bold">rifki</span>
-                    </span>
+                    <div class="profile-container">
+                  <img id="preview"
+                        src="{{ auth()->user()->role == 'admin' ?? 'petugas'
+                                ? (auth()->user()->foto ? asset('storage/' . auth()->user()->foto) : 'https://via.placeholder.com/150')
+                                : (optional(auth()->user()->petugas)->foto ? asset('storage/' . optional(auth()->user()->petugas)->foto) : 'https://via.placeholder.com/150') }}"
+                        class="rounded-circle"
+                        style="width: 50px; height: 50px; object-fit: cover; border: 2px solid #ddd; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);"
+                        alt="Profile Photo">
+
+                    <span>Hi, <strong>{{ auth()->user()->nama_lengkap }}</strong></span>
+                </div>
                   </a>
                   <ul class="dropdown-menu dropdown-user animated fadeIn">
                     <div class="dropdown-user-scroll scrollbar-outer">
@@ -342,7 +342,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Account Setting</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="login">Logout</a>
                       </li>
                     </div>
                   </ul>

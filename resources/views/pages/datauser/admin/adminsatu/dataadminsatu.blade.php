@@ -107,7 +107,7 @@
                         />
                       </div>
                       <div class="info-post ms-2">
-                        <p class="username">Joko Subianto</p>
+                        <p class="username">{{ auth()->user()->nama_lengkap }}</p>
                         <p class="date text-muted">20 Jan 18</p>
                       </div>
                     </div>
@@ -206,35 +206,35 @@
               </div>
             </div>
             <div class="container mt-4">
-<div class="card shadow-lg">
-<div class="card-header bg-dark text-white">
-  <h4 class="mb-0">Data Admin</h4>
-</div>
-<div class="card-body p-0">
-  <table class="table table-striped table-hover mb-0">
-    <thead class="table-dark">
-      <tr>
-        <th scope="col">No</th>
-        <th scope="col">Nama</th>
-        <th scope="col">Jenis Kelamin</th>
-        <th scope="col">Email</th>
-        <th scope="col">No Telepon</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach ($adminsatu as $no => $admin)
-      <tr>
-        <td>{{ $no + 1 }}</td>
-        <td>{{ $admin->nama_lengkap }}</td>
-        <td>{{ $admin->jeniskelamin }}</td>
-        <td>{{ $admin->email }}</td>
-        <td>{{ $admin->no_hp }}</td>
-      </tr>
-      @endforeach
-    </tbody>
-  </table>
-</div>
-</div>
-</div>
+              <div class="card shadow-lg">
+                <div class="card-header bg-dark text-white">
+                  <h4 class="mb-0">Data Admin</h4>
+                </div>
+                <div class="card-body p-0">
+                  <table class="table table-striped table-hover mb-0">
+                    <thead class="table-dark">
+                      <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Jenis Kelamin</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">No Telepon</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($adminsatu as $no => $admin)
+                    <tr>
+                      <td>{{ $no + 1 }}</td>
+                      <td>{{ $admin->nama_lengkap }}</td>
+                      <td>{{ $admin->jeniskelamin }}</td>
+                      <td>{{ $admin->email }}</td>
+                      <td>{{ $admin->no_hp }}</td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              </div>
+              </div>
+            </div>
 </div>
 @endsection
