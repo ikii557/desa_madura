@@ -35,7 +35,8 @@ Route::middleware('auth')->group(function () {
     Route::get('adminsatu', [UserController::class, 'index']);
     Route::get('tambahadminsatu', [UserController::class, 'create']);
     Route::post('/store/admin', [UserController::class, 'store']);
-
+    Route::get('editadminsatu/{id}', [UserController::class, 'edit']);
+    Route::post('/update/adminsatu/{id}', [UserController::class, 'update']);
     // Admin Dua (static view)
     Route::get('admindua', function () {
         return view('pages.datauser.admin.admindua.dataadmindua');
@@ -45,9 +46,9 @@ Route::middleware('auth')->group(function () {
     Route::get('perangkatdesa', [PerangkatdesaController::class, 'index']);
     Route::get('tambahperangkatdesa', [PerangkatdesaController::class, 'create']);
     Route::post('/store/perangkatdesa', [PerangkatdesaController::class, 'store']);
-    Route::get('perangkat_desa', function () {
-        return view('pages.datauser.perangkatdesa.dataperangkatdesa');
-    });
+    Route::get('editperangkatdesa/{id}', [PerangkatdesaController::class, 'edit']);
+    Route::post('/update/perangkatdesa/{id}', [PerangkatdesaController::class, 'update']);
+    
 
     // ========== DATA WARGA ==========
     Route::get('data_warga', [WargaController::class, 'index']);

@@ -301,7 +301,7 @@
                     aria-expanded="false"
                   >
                     <div class="profile-container">
-                  <img id="preview"
+                      <img id="preview"
                         src="{{ auth()->user()->role == 'admin' ?? 'petugas'
                                 ? (auth()->user()->foto ? asset('storage/' . auth()->user()->foto) : 'https://via.placeholder.com/150')
                                 : (optional(auth()->user()->petugas)->foto ? asset('storage/' . optional(auth()->user()->petugas)->foto) : 'https://via.placeholder.com/150') }}"

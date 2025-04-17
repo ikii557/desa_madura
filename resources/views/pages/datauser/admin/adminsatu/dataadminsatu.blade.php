@@ -100,12 +100,15 @@
                   <div class="card-body">
                     <div class="d-flex">
                       <div class="avatar">
-                        <img
-                          src="assets/img/profile2.jpg"
-                          alt="..."
-                          class="avatar-img rounded-circle"
-                        />
+                        <img id="preview"
+                        src="{{ auth()->user()->role == 'admin' ?? 'petugas'
+                                ? (auth()->user()->foto ? asset('storage/' . auth()->user()->foto) : 'https://via.placeholder.com/150')
+                                : (optional(auth()->user()->petugas)->foto ? asset('storage/' . optional(auth()->user()->petugas)->foto) : 'https://via.placeholder.com/150') }}"
+                        class="rounded-circle"
+                        style="width: 50px; height: 50px; object-fit: cover; border: 2px solid #ddd; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);"
+                        alt="Profile Photo">
                       </div>
+
                       <div class="info-post ms-2">
                         <p class="username">{{ auth()->user()->nama_lengkap }}</p>
                         <p class="date text-muted">20 Jan 18</p>
@@ -219,6 +222,8 @@
                         <th scope="col">Jenis Kelamin</th>
                         <th scope="col">Email</th>
                         <th scope="col">No Telepon</th>
+                        <th scope="col">alamat</th>
+                        <th scope="col">opsi</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -229,6 +234,10 @@
                       <td>{{ $admin->jeniskelamin }}</td>
                       <td>{{ $admin->email }}</td>
                       <td>{{ $admin->no_hp }}</td>
+                      <td>{{ $admin->alamat }}</td>
+                      <td><a href="/editadminsatu/{{$admin->id}}" class="btn btn-info btn-sm">Edit</a>
+                      
+                      </td>
                     </tr>
                     @endforeach
                   </tbody>
