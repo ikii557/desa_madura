@@ -116,9 +116,9 @@ class  AuthController extends Controller
 
         // **Redirect berdasarkan peran (role)**
         if ($user->role === 'admin') {
-            return redirect('/index')->with('success', 'Registrasi berhasil! Anda masuk sebagai Admin.');
-        } elseif ($user->role === 'petugas') {
-            return redirect('/index')->with('success', 'Registrasi berhasil! Anda masuk sebagai Petugas.');
+            return redirect('/dashboard')->with('success', 'Registrasi berhasil! Anda masuk sebagai Admin.');
+        } elseif ($user->role === 'perangkat_desa') {
+            return redirect('/dashboard')->with('success', 'Registrasi berhasil! Anda masuk sebagai Petugas.');
         } else {
             return redirect('/dashboard_masyarakat')->with('success', 'Registrasi berhasil! Anda masuk sebagai Masyarakat.');
         }

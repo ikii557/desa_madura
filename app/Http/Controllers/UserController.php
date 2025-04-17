@@ -75,8 +75,9 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $admin = User::findOrFail($id);
-        return view('admin.profile.edit_admin', compact('admin'));
+        $adminsatu = User::findOrfail($id);
+        // $admins = User::where('role', 'admin')->get();
+        return view('pages.datauser.admin.adminsatu.editadminsatu', compact('adminsatu'));
     }
 
     public function update(Request $request, $id)
@@ -121,7 +122,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect('admin')->with('success', 'Data admin berhasil diperbarui.');
+        return redirect('adminsatu')->with('success', 'Data admin berhasil diperbarui.');
     }
 
     public function detailprofile($id)

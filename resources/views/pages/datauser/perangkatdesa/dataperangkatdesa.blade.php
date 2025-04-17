@@ -172,7 +172,50 @@
                   </div>
                 </div>
               </div>
+              <div class="col-md-4">
+                <div class="card card-post card-round">
+                  <img
+                    class="card-img-top"
+                    src="assets/img/blogpost.jpg"
+                    alt="Card image cap"
+                  />
+                  <div class="card-body">
+                    <div class="d-flex">
+                      <div class="avatar">
+                        <img id="preview"
+                        src="{{ auth()->user()->role == 'admin' ?? 'petugas'
+                                ? (auth()->user()->foto ? asset('storage/' . auth()->user()->foto) : 'https://via.placeholder.com/150')
+                                : (optional(auth()->user()->petugas)->foto ? asset('storage/' . optional(auth()->user()->petugas)->foto) : 'https://via.placeholder.com/150') }}"
+                        class="rounded-circle"
+                        style="width: 50px; height: 50px; object-fit: cover; border: 2px solid #ddd; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);"
+                        alt="Profile Photo">
+                      </div>
+
+                      <div class="info-post ms-2">
+                        <p class="username">{{ auth()->user()->nama_lengkap }}</p>
+                        <p class="date text-muted">20 Jan 18</p>
+                      </div>
+                    </div>
+                    <div class="separator-solid"></div>
+                    <p class="card-category text-info mb-1">
+                      <a href="#">Design</a>
+                    </p>
+                    <h3 class="card-title">
+                      <a href="#"> Best Design Resources This Week </a>
+                    </h3>
+                    <p class="card-text">
+                      Some quick example text to build on the card title and
+                      make up the bulk of the card's content.
+                    </p>
+                    
+                    <a href="/editperangkatdesa/{{ $perangkatdesa->id }}" class="btn btn-primary btn-rounded btn-sm"
+                      >edit profile</a
+                    >
+                  </div>
+                </div>
               </div>
+              </div>
+              
              <div class="container mt-4">
               <div class="card shadow-lg">
                 <div class="card-header bg-dark text-white">
@@ -187,19 +230,21 @@
                         <th scope="col">Jenis Kelamin</th>
                         <th scope="col">Email</th>
                         <th scope="col">No Telepon</th>
+                        <th scope="col">alamat</th>
+                        <th scope="col">opsi</th>
                       </tr>
                     </thead>
-                    <tbody>
-                    @foreach ($perangkatdesa as $no => $perangkatdesa)
-                    <tr>
-                      <td>{{ $no + 1 }}</td>
-                      <td>{{ $perangkatdesa->nama_lengkap }}</td>
-                      <td>{{ $perangkatdesa->jeniskelamin }}</td>
-                      <td>{{ $perangkatdesa->email }}</td>
-                      <td>{{ $perangkatdesa->no_hp }}</td>
-                    </tr>
+                    @foreach ($perangkatdesa as $no => $pegawaidesa)
+                      <tr>
+                        <td>{{ $no + 1  }}</td>
+                        <td>{{ $pegawaidesa->nama_lengkap }}</td>
+                        <td>{{ $pegawaidesa->jeniskelamin }}</td>
+                        <td>{{ $pegawaidesa->email }}</td>
+                        <td>{{ $pegawaidesa->no_hp }}</td>
+                        <td>{{ $pegawaidesa->alamat }}</td>
+                        <td><a href="/editperangkatdesa/{{ $pegawaidesa->id }}" class="btn btn-info btn-sm">Edit</a></td>
+                      </tr>
                     @endforeach
-                  </tbody>
                 </table>
               </div>
               </div>
