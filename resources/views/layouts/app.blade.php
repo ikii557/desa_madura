@@ -59,6 +59,42 @@
 
         <div class="container">
           @yield('main')
+          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            // Menampilkan SweetAlert jika ada session success
+            @if (session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: '{{ session('success') }}',
+                    confirmButtonText: 'OK',
+                    showClass: {
+                        popup: 'animate_animated animate_fadeInUp' // animasi muncul
+                    },
+                    hideClass: {
+                        popup: 'animate_animated animate_fadeOutDown' // animasi hilang
+                    },
+                    timer: 5000 // Waktu notifikasi muncul (dalam milidetik)
+                });
+            @endif
+
+            // Menampilkan SweetAlert jika ada error
+            @if ($errors->any())
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal!',
+                    text: '{{ $errors->first() }}',
+                    confirmButtonText: 'OK',
+                    showClass: {
+                        popup: 'animate_animated animate_fadeInUp'
+                    },
+                    hideClass: {
+                        popup: 'animate_animated animate_fadeOutDown'
+                    },
+                    timer: 5000
+                });
+            @endif
+        </script>
         </div>
 
         <footer class="footer">
