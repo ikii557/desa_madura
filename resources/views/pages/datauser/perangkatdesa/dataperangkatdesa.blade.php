@@ -183,9 +183,9 @@
                     <div class="d-flex">
                       <div class="avatar">
                         <img id="preview"
-                        src="{{ auth()->user()->role == 'admin' ?? 'petugas'
+                        src="{{ auth()->user()->role == 'admin' ?? 'pegawaidesa'
                                 ? (auth()->user()->foto ? asset('storage/' . auth()->user()->foto) : 'https://via.placeholder.com/150')
-                                : (optional(auth()->user()->petugas)->foto ? asset('storage/' . optional(auth()->user()->petugas)->foto) : 'https://via.placeholder.com/150') }}"
+                                : (optional(auth()->user()->pegawaidesa)->foto ? asset('storage/' . optional(auth()->user()->pegawaidesa)->foto) : 'https://via.placeholder.com/150') }}"
                         class="rounded-circle"
                         style="width: 50px; height: 50px; object-fit: cover; border: 2px solid #ddd; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);"
                         alt="Profile Photo">
@@ -208,7 +208,7 @@
                       make up the bulk of the card's content.
                     </p>
                     
-                    <a href="/editperangkatdesa/{{ $perangkatdesa->id }}" class="btn btn-primary btn-rounded btn-sm"
+                    <a href="/editperangkatdesa/{{ $perangkatdesa }}" class="btn btn-primary btn-rounded btn-sm"
                       >edit profile</a
                     >
                   </div>
@@ -217,38 +217,57 @@
               </div>
               
              <div class="container mt-4">
-              <div class="card shadow-lg">
-                <div class="card-header bg-dark text-white">
-                  <h4 class="mb-0">Data perangkatdesa</h4>
+                    <h4>Data Perangkat Desa</h4>
+
+                    <a href="/tambahperangkatdesa" class="btn btn-primary mb-3">+ Tambah Perangkat Desa</a>
+
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Lengkap</th>
+                                <th>Jenis Kelamin</th>
+                                <th>Email</th>
+                                <th>No HP</th>
+                                <th>Alamat</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php $no = 1; @endphp
+                            @foreach ($perangkatdesa as $pegawaidesa)
+                                <tr>
+                                    <td>{{ $no++ }}</td>
+                                    <td>{{ $pegawaidesa->nama_lengkap }}</td>
+                                    <td>{{ $pegawaidesa->jeniskelamin }}</td>
+                                    <td>{{ $pegawaidesa->email }}</td>
+                                    <td>{{ $pegawaidesa->no_hp }}</td>
+                                    <td>{{ $pegawaidesa->alamat }}</td>
+                                    @if(auth()->user()->role !== 'perangkat_desa')
+                                        <td>
+                                            <a href="/editperangkatdesa/{{ $pegawaidesa->id }}" class="btn btn-info btn-sm">Edit</a>
+                                            <a href="javascript:void(0);" class="btn btn-danger btn-sm"
+                                              onclick="confirmDeletion({{ $pegawaidesa->id }});">
+                                                <i class="fa fa-close color-danger">Hapus</i>
+                                            </a>
+                                        </td>
+                                    @else
+                                        <td>-</td>
+                                    @endif
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
-                <div class="card-body p-0">
-                  <table class="table table-striped table-hover mb-0">
-                    <thead class="table-dark">
-                      <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Jenis Kelamin</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">No Telepon</th>
-                        <th scope="col">alamat</th>
-                        <th scope="col">opsi</th>
-                      </tr>
-                    </thead>
-                    @foreach ($perangkatdesa as $no => $pegawaidesa)
-                      <tr>
-                        <td>{{ $no + 1  }}</td>
-                        <td>{{ $pegawaidesa->nama_lengkap }}</td>
-                        <td>{{ $pegawaidesa->jeniskelamin }}</td>
-                        <td>{{ $pegawaidesa->email }}</td>
-                        <td>{{ $pegawaidesa->no_hp }}</td>
-                        <td>{{ $pegawaidesa->alamat }}</td>
-                        <td><a href="/editperangkatdesa/{{ $pegawaidesa->id }}" class="btn btn-info btn-sm">Edit</a></td>
-                      </tr>
-                    @endforeach
-                </table>
-              </div>
-              </div>
-            </div>  
+
+                {{-- Konfirmasi Hapus --}}
+                <script>
+                    function confirmDeletion(id) {
+                        if (confirm("Apakah Anda yakin ingin menghapus perangkat desa ini?")) {
+                            window.location.href = "/hapusperangkatdesa/" + id;
+                        }
+                    }
+                </script>
             </div>
 
               

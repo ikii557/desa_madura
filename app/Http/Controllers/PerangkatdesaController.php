@@ -8,17 +8,21 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class PerangkatdesaController extends Controller
+
 //<?php
 {
     public function index()
     {
+        // Ambil data user dengan role 'perangkat_desa'
         $perangkatdesa = User::where('role', 'perangkat_desa')->get();
+
         return view('pages.datauser.perangkatdesa.dataperangkatdesa', compact('perangkatdesa'));
     }
 
+
     public function create()
     {
-        return view('pages.datauser.perangkatdesa.tambahperangkatdesa');
+        return view('pages.datauser.admin.perangkatdesa.tambahperangkatdesa');
     }
 
     public function store(Request $request)
@@ -73,11 +77,10 @@ class PerangkatdesaController extends Controller
 
     public function edit($id)
     {
-        $perangkatdesa = User::findOrFail($id);
+        $perangkatdesa = User::findOrfail($id);
+        // $admins = User::where('role', 'admin')->get();
         return view('pages.datauser.perangkatdesa.editperangkatdesa', compact('perangkatdesa'));
     }
-
-
 
     public function update(Request $request, $id)
     {
@@ -90,9 +93,9 @@ class PerangkatdesaController extends Controller
             'jeniskelamin' => 'required|in:male,female',
             'email'        => 'required|string|email|unique:users,email,' . $id,
             'password'     => 'nullable|string|min:8',
-            'no_hp'        => 'required|string|max:15|regex:/^08[0-9]{8,13}$/',
+            'no_hp'        => 'required|string|max:15|regex:/^\+?[\d\s\-]+$/',
             'alamat'       => 'required|string',
-            'role'         => 'required|in:admin,warga,perangkat_desa',
+            'role'         => 'required|in:warga,admin,perangkat_desa',
             'foto'         => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
@@ -100,7 +103,7 @@ class PerangkatdesaController extends Controller
         $user->nik = $request->nik;
         $user->kk = $request->kk;
         $user->jeniskelamin = $request->jeniskelamin;
-        $user->email = $request->email . '@gmail.com'; // Karena di form hanya input 'username'
+        $user->email = $request->email;
 
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);
@@ -110,21 +113,19 @@ class PerangkatdesaController extends Controller
         $user->alamat = $request->alamat;
         $user->role = $request->role;
 
-        // Handle Upload Foto
         if ($request->hasFile('foto')) {
             if ($user->foto && Storage::exists('public/' . $user->foto)) {
                 Storage::delete('public/' . $user->foto);
             }
 
-            $path = $request->file('foto')->store('foto_perangkatdesa', 'public');
+            $path = $request->file('foto')->store('foto_user', 'public');
             $user->foto = $path;
         }
 
         $user->save();
 
-        return redirect('/perangkatdesa')->with('success', 'Data perangkat desa berhasil diperbarui.');
+        return redirect('perangkatdesa')->with('success', 'Data admin berhasil diperbarui.');
     }
-
 
     public function detailprofile($id)
     {
