@@ -36,86 +36,100 @@
                 <h4 class="text-section">Components</h4>
               </li>
              <li class="nav-item 
-                  {{ request()->is('adminsatu') || request()->is('tambahadminsatu') || request()->is('admindua') || request()->is('perangkatdesa') || request()->is('data_warga') ? 'active' : '' }}">
-                <a data-bs-toggle="collapse" href="#submenu" 
-                  aria-expanded="{{ request()->is('adminsatu') || request()->is('tambahadminsatu') || request()->is('admindua') || request()->is('perangkatdesa') || request()->is('data_warga') ? 'true' : 'false' }}">
-                  <i class="fas fa-bars"></i>
-                  <p>Menu</p>
-                  <span class="caret"></span>
-                </a>
+                  {{ request()->is('adminsatu') || request()->is('editadminsatu') || request()->is('tambahadminsatu') || 
+                    request()->is('admindua') || request()->is('editadmindua') || request()->is('tambahadmindua') || 
+                    request()->is('perangkatdesa') || request()->is('editperangkatdesa') || request()->is('tambahperangkatdesa') || 
+                    request()->is('data_warga') || request()->is('editdatawarga') || request()->is('tambahdatawarga') ? 'active' : '' }}">
+                  
+                  <a data-bs-toggle="collapse" href="#submenu" 
+                    aria-expanded="{{ request()->is('adminsatu') || request()->is('editadminsatu') || request()->is('tambahadminsatu') || 
+                                      request()->is('admindua') || request()->is('editadmindua') || request()->is('tambahadmindua') || 
+                                      request()->is('perangkatdesa') || request()->is('editperangkatdesa') || request()->is('tambahperangkatdesa') || 
+                                      request()->is('data_warga') || request()->is('editdatawarga') || request()->is('tambahdatawarga') ? 'true' : 'false' }}">
+                    <i class="fas fa-bars"></i>
+                    <p>Menu</p>
+                    <span class="caret"></span>
+                  </a>
 
-                <div class="collapse 
-                    {{ request()->is('adminsatu') || request()->is('admindua') || request()->is('perangkatdesa') || request()->is('data_warga') ? 'show' : '' }}" 
-                    id="submenu">
-                  <ul class="nav nav-collapse">
+                  <div class="collapse 
+                    {{ request()->is('adminsatu') || request()->is('editadminsatu') || request()->is('tambahadminsatu') || 
+                      request()->is('admindua') || request()->is('editadmindua') || request()->is('tambahadmindua') || 
+                      request()->is('perangkatdesa') || request()->is('editperangkatdesa') || request()->is('tambahperangkatdesa') || 
+                      request()->is('data_warga') || request()->is('editdatawarga') || request()->is('tambahdatawarga') ? 'show' : '' }}" 
+                      id="submenu">
+                    <ul class="nav nav-collapse">
 
-                    {{-- Submenu Admin --}}
-                    <li class="{{ request()->is('adminsatu') || request()->is('admindua') || request()->is('tambahadminsatu') ? 'active' : '' }}">
-                      <a data-bs-toggle="collapse" href="#subnav1" 
-                        aria-expanded="{{ request()->is('adminsatu') || request()->is('admindua') ? 'true' : 'false' }}">
-                        <span class="sub-item">Profil Admin</span>
-                        <span class="caret"></span>
-                      </a>
+                      {{-- Submenu Admin --}}
+                      <li class="{{ request()->is('adminsatu') || request()->is('editadminsatu') || request()->is('tambahadminsatu') || 
+                                  request()->is('admindua') || request()->is('editadmindua') || request()->is('tambahadmindua') ? 'active' : '' }}">
+                        <a data-bs-toggle="collapse" href="#subnav1" 
+                          aria-expanded="{{ request()->is('adminsatu') || request()->is('admindua') || 
+                                          request()->is('editadminsatu') || request()->is('editadmindua') ? 'true' : 'false' }}">
+                          <span class="sub-item">Profil Admin</span>
+                          <span class="caret"></span>
+                        </a>
 
-                      <div class="collapse 
-                          {{ request()->is('adminsatu') || request()->is('admindua') ? 'show' : '' }}" 
-                          id="subnav1">
-                        <ul class="nav nav-collapse subnav">
-                          <li class="{{ request()->is('adminsatu') ? 'active' : '' }}">
-                            <a href="{{ url('adminsatu') }}">
-                              <span class="sub-item">Admin 1</span>
-                            </a>
-                          </li>
-                          <li class="{{ request()->is('admindua') ? 'active' : '' }}">
-                            <a href="{{ url('admindua') }}">
-                              <span class="sub-item">Admin 2</span>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
+                        <div class="collapse 
+                          {{ request()->is('adminsatu') || request()->is('editadminsatu') || request()->is('tambahadminsatu') || 
+                            request()->is('admindua') || request()->is('editadmindua') || request()->is('tambahadmindua') ? 'show' : '' }}" 
+                            id="subnav1">
+                          <ul class="nav nav-collapse subnav">
+                            <li class="{{ request()->is('adminsatu') || request()->is('editadminsatu') ? 'active' : '' }}">
+                              <a href="{{ url('adminsatu') }}">
+                                <span class="sub-item">Admin 1</span>
+                              </a>
+                            </li>
+                            <li class="{{ request()->is('admindua') || request()->is('editadmindua') ? 'active' : '' }}">
+                              <a href="{{ url('admindua') }}">
+                                <span class="sub-item">Admin 2</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
 
-                    {{-- Submenu Perangkat Desa --}}
-                    <li class="{{ request()->is('perangkatdesa') ? 'active' : '' }}">
-                      <a data-bs-toggle="collapse" href="#subnav2" 
-                        aria-expanded="{{ request()->is('perangkatdesa') ? 'true' : 'false' }}">
-                        <span class="sub-item">Perangkat Desa</span>
-                        <span class="caret"></span>
-                      </a>
+                      {{-- Submenu Perangkat Desa --}}
+                      <li class="{{ request()->is('perangkatdesa') || request()->is('editperangkatdesa') || request()->is('tambahperangkatdesa') ? 'active' : '' }}">
+                        <a data-bs-toggle="collapse" href="#subnav2" 
+                          aria-expanded="{{ request()->is('perangkatdesa') || request()->is('editperangkatdesa') || request()->is('tambahperangkatdesa') ? 'true' : 'false' }}">
+                          <span class="sub-item">Perangkat Desa</span>
+                          <span class="caret"></span>
+                        </a>
 
-                      <div class="collapse {{ request()->is('perangkatdesa') ? 'show' : '' }}" id="subnav2">
-                        <ul class="nav nav-collapse subnav">
-                          <li class="{{ request()->is('perangkatdesa') ? 'active' : '' }}">
-                            <a href="{{ url('perangkatdesa') }}">
-                              <span class="sub-item">DATA Perangkat Desa</span>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
+                        <div class="collapse {{ request()->is('perangkatdesa') || request()->is('editperangkatdesa') || request()->is('tambahperangkatdesa') ? 'show' : '' }}" id="subnav2">
+                          <ul class="nav nav-collapse subnav">
+                            <li class="{{ request()->is('perangkatdesa') || request()->is('editperangkatdesa') ? 'active' : '' }}">
+                              <a href="{{ url('perangkatdesa') }}">
+                                <span class="sub-item">DATA Perangkat Desa</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
 
-                    {{-- Submenu Data Warga --}}
-                    <li class="{{ request()->is('data-warga') ? 'active' : '' }}">
-                      <a data-bs-toggle="collapse" href="#subnav3" 
-                        aria-expanded="{{ request()->is('data-warga') ? 'true' : 'false' }}">
-                        <span class="sub-item">Data Warga</span>
-                        <span class="caret"></span>
-                      </a>
+                      {{-- Submenu Data Warga --}}
+                      <li class="{{ request()->is('data_warga') || request()->is('tambahdatawarga') || request()->is('editdatawarga') ? 'active' : '' }}">
+                        <a data-bs-toggle="collapse" href="#subnav3" 
+                          aria-expanded="{{ request()->is('data_warga') || request()->is('tambahdatawarga') || request()->is('editdatawarga') ? 'true' : 'false' }}">
+                          <span class="sub-item">Data Warga</span>
+                          <span class="caret"></span>
+                        </a>
 
-                      <div class="collapse {{ request()->is('data_warga') ? 'show' : '' }}" id="subnav3">
-                        <ul class="nav nav-collapse subnav">
-                          <li class="{{ request()->is('data_warga') ? 'active' : '' }}">
-                            <a href="{{ url('data_warga') }}">
-                              <span class="sub-item">DATA Warga</span>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
+                        <div class="collapse {{ request()->is('data_warga') || request()->is('tambahdatawarga') || request()->is('editdatawarga') ? 'show' : '' }}" id="subnav3">
+                          <ul class="nav nav-collapse subnav">
+                            <li class="{{ request()->is('data_warga') || request()->is('editdatawarga') ? 'active' : '' }}">
+                              <a href="{{ url('data_warga') }}">
+                                <span class="sub-item">DATA Warga</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
 
-                  </ul>
-                </div>
-              </li>
+                    </ul>
+                  </div>
+                </li>
+
 
 
               <li class="nav-item {{ request()->is('pengajuankk','pengajuanktp','pengajuandomisili','pengajuannikah') ? 'active' : '' }}">
