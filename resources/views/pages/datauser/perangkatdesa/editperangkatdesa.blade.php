@@ -128,7 +128,7 @@
                                 <div class="form-group">
                                     <label for="role" class="form-label">Role</label>
                                       <select name="role" id="role" class="form-control form-control-lg" required>
-                                          <option value="admin">admin</option>
+                                          <option value="perangkat_desa">perangkat desa</option>
                                       </select>
                                 @error('role')
                                     <p class="text-danger">{{ $message }}</p>

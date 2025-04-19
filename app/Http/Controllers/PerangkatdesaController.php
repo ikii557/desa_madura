@@ -22,7 +22,7 @@ class PerangkatdesaController extends Controller
 
     public function create()
     {
-        return view('pages.datauser.admin.perangkatdesa.tambahperangkatdesa');
+        return view('pages.datauser.perangkatdesa.tambahperangkatdesa');
     }
 
     public function store(Request $request)
@@ -114,13 +114,21 @@ class PerangkatdesaController extends Controller
         $user->role = $request->role;
 
         if ($request->hasFile('foto')) {
+            // Hapus foto lama jika ada
             if ($user->foto && Storage::exists('public/' . $user->foto)) {
                 Storage::delete('public/' . $user->foto);
             }
 
-            $path = $request->file('foto')->store('foto_user', 'public');
+            // Tentukan folder penyimpanan sesuai role
+            $folder = auth()->user()->role == 'admin' ? 'foto' : 'foto_perangkatdesa';
+
+            // Simpan file foto ke folder yang sesuai
+            $path = $request->file('foto')->store($folder, 'public');
+
+            // Simpan path ke database
             $user->foto = $path;
         }
+
 
         $user->save();
 

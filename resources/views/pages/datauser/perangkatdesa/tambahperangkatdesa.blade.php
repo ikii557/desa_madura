@@ -6,7 +6,7 @@
         <div class="col-md-10 col-lg-12"> {{-- Atur lebar di sini --}}
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">Tambah Admin</div>
+                    <div class="card-title">Tambah Perangkat Desa</div>
                 </div>
                 <div class="card-body">
                     <form action="/store/perangkatdesa" method="post">
