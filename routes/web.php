@@ -29,7 +29,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('pages.index');
     });
-
+    Route::get('/indexwarga', function () {
+        return view('pages.datauser.dashboard_warga');
+    });
+    Route::get('/lokasi_desamadura', function () {
+        return view('pages.datauser.dashboard_warga');
+    });
     // ========== DATA USER ==========
     // Admin Satu
     Route::get('adminsatu', [UserController::class, 'index']);
@@ -108,4 +113,5 @@ Route::middleware('auth')->group(function () {
     Route::get('data_statistik', function () {
         return view('pages.statistikdesa.datastatistikdesa');
     });
+
 });
